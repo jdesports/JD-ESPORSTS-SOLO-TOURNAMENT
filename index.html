@@ -125,60 +125,12 @@
    ===================================================== */
 
 // 1. Your WhatsApp link (group invite link OR https://wa.me/91XXXXXXXXXX?text=...)
-const WHATSAPP_LINK = "https://wa.me/918217816606?text=Hi%20JD%20Esports%2C%20I%20want%20to%20register%20for%20the%20Free%20Fire%20MAX%20tournament";
-
-// 2. Total slots
-const TOTAL_SLOTS = 48;
-
-// 3. REGISTERED PLAYERS - add each name inside quotes, separated by commas.
-//    The registered / remaining count updates automatically.
-//    Example: ["JD Rahul", "Ninja X", "Sky Gamer"]
-const PLAYERS = [
-  "Royal राजपूत",
-  "Ꭺʀʀᴏᴡㅤ→",
-  "MR X. LIVE",
-  "TQG.KAIZEN07",
-  "OFLﾠHITESH",
-  "TG MAFIA",
-  "RizzyTheOG",
-  "TOX1C",
-  "mahendraaa7",
-  "Mvp speedy",
-  "Bewafa",
-  "༒VIKASH-KinG",
-  "GP.J1NW00",
-  "ABHIMANYU1",
-  "7h aura",
-  "Agent?ITACHI",
-  ".Rock yt.",
-  "GXL ISAGI",
-  "ANISH HERE",
-  " NFL Rakesh",
-  "GXL GALAXY",
-  "AG AM4R  !!" ,
-];
-
-// 4. Tournament details (change the values)
-const DETAILS = [
-  { label: "Game",        value: "Free Fire MAX" },
-  { label: "Date",        value: "SOON AFTER REGISTRATION" },
-  { label: "Time",        value: "7:00 PM IST" },
-  { label: "Mode",        value: "Solo" },
-  { label: "Entry Fee",   value: "Free" },
-  { label: "Prize Pool",  value: "Rs. 200" },
-  { label: "1st Prize",   value: "Rs. 100" },
-  { label: "2nd Prize",   value: "Rs. 60" },
-  { label: "3rd Prize",   value: "Rs. 40" }
-];
-
-// 5. Rules (add or remove lines)
-const RULES = [
-  "Registration is only through WhatsApp.",
-  "Slots are filled on a first come, first served basis.",
-  "Hackers / cheaters will be disqualified immediately.",
-  "Join the room on time. Late players will not be allowed.",
-  "Admin's decision is final."
-];
+fetch("data.json?t=" + Date.now()).then(r => r.json()).then(data => {
+const WHATSAPP_LINK = data.whatsappLink;
+const TOTAL_SLOTS   = data.totalSlots;
+const PLAYERS       = data.players;
+const DETAILS       = data.details;
+const RULES         = data.rules;
 
 /* =====================================================
    DO NOT EDIT BELOW THIS LINE
@@ -239,6 +191,7 @@ RULES.forEach(t => {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+  });
 </script>
 </body>
 </html>
